@@ -8,7 +8,7 @@ app.config.from_object(__name__)
 app.config.update(dict(
 	DATABASE=os.path.join(app.root_path, 'books.db'),
 	DEBUG=True,
-	SECRET_KEY='readbooks',
+	SECRET_KEY='yGza6dYu2xVPEcnS',
 	USERNAME='admin',
 	PASSWORD='default'
 ))
