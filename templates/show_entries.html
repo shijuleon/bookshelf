@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block body %}
+
+  <div class="container">
+  <div class="row">
+    {% for entry in entries %}
+    <h3>{{ entry.title }}</h3>
+    <h5><b>{{ entry.author }}</b></h5> 
+    <h5>Review: {{ entry.review }}</h5>
+    <h5>Date added: {{ entry.date_added }}</h5>
+    <h5>Date read: {{ entry.date_read }}</h5>
+    <a href="{{ url_for('edit_entry', entry_id=entry.id) }}" method=post>Edit</a>
+	<a href="{{ url_for('del_entry', entry_id=entry.id) }}" method=post>Delete</a>
+	<a href="{{ url_for('del_entry', entry_id=entry.id) }}" method=post></a>
+  {% else %}
+    <h4><em>No books yet? Start reading.</em></h4>
+  {% endfor %}
+  </div>
+</div>
+  
+</div>
+{% endblock %}

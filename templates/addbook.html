@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block body %}
+  {% if session.logged_in %}
+    													
+<div class="container">
+	<div class="row">
+		<div class="col-md-6">
+			<form action="{{ url_for('add_entry') }}" method=post class=add-entry>
+				<h5>Title</h5><input type="text" class="form-control" name=title>
+				<h5>Author</h5><input type="text" class="form-control" name=author>
+				<h5>Review</h5><textarea class="form-control" rows="3" name=review></textarea>
+				<h5>Date Added</h5><input type="text" class="form-control" name=date_added>
+				<h5>Date Read</h5><input type="text" class="form-control" name=date_read></br>
+				<button type="submit" class="btn btn-default">Submit</button>
+			</form>
+		</div>
+	</div>
+</div>
+
+{% else %}	
+
+<div class="alert alert-danger">You are not logged in.</div>
+
+{% endif %}
+	
+{% endblock %}
