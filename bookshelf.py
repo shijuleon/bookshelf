@@ -88,6 +88,11 @@ def del_entry(entry_id):
 	flash('Entry successfully deleted')
 	return redirect(url_for('show_entries'))
 
+@app.route('/files')
+def get_files():
+    files = os.listdir(os.getcwd())
+    return render_template('files.html', files=files)
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
 	error = None
