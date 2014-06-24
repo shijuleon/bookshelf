@@ -6,7 +6,7 @@
 	<div class="row">
 		<div class="col-md-6">
 			{% for entry in entries %}
-				<form action="{{ url_for('add_entry') }}" method=post class=add-entry>
+				<form action="{{ url_for('update_edit') }}" method=post class=add-entry>
 				<h5>Title</h5><input type="text" class="form-control" value="{{ entry.title }}" name=title>
 				<h5>Author</h5><input type="text" class="form-control" value="{{ entry.author }}" name=author>
 				<h5>Review</h5><textarea class="form-control" rows="3" name=review>{{ entry.review }}</textarea>

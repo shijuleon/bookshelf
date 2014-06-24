@@ -69,6 +69,15 @@ def edit_entry(entry_id):
 	entries = cur.fetchall()
 	return render_template('edit.html', entries=entries)
 
+@app.route('/update', methods=['POST'])
+def update_edit():
+	if not session.get('logged_in'):
+		abort(401)
+	db = get_db()
+	db.execute('UPDATE entries SET title=?, author=?, review=?, date_added=?, date_read=?', [request.form['title'], request.form['author'], request.form['review'], request.form['date_added'], request.form['date_read']])
+	db.commit()	
+	return redirect(url_for('show_entries'))
+
 @app.route('/del/<int:entry_id>')
 def del_entry(entry_id):
 	if not session.get('logged_in'):
@@ -100,5 +109,4 @@ def logout():
 	return redirect(url_for('show_entries'))
 
 if __name__ == '__main__':
-	init_db()
 	app.run(host= '0.0.0.0')
